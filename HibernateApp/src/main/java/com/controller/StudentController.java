@@ -20,7 +20,34 @@ public class StudentController extends jakarta.servlet.http.HttpServlet {
 			s.setEmail(request.getParameter("email"));
 			s.setMobile(Long.parseLong(request.getParameter("mobile")));
 			Studentdao.insertStudent(s);
-			response.sendRedirect("insert.jsp");
+			response.sendRedirect("show.jsp");
+		}
+		
+		else if(action.equalsIgnoreCase("edit")) {
+			int id=Integer.parseInt(request.getParameter("id"));
+			Student s=Studentdao.getStudent(id);
+			request.setAttribute("s", s);
+			request.getRequestDispatcher("update.jsp").forward(request, response);
+			
+		}
+		else if(action.equalsIgnoreCase("update")) {
+			Student s =new Student();
+			s.setId(Integer.parseInt(request.getParameter("id")));
+			s.setFname(request.getParameter("fname"));
+			s.setLname(request.getParameter("lname"));
+			s.setEmail(request.getParameter("email"));
+			s.setMobile(Long.parseLong(request.getParameter("mobile")));
+			Studentdao.insertStudent(s);
+			response.sendRedirect("show.jsp");
+
+		}
+		
+		else if(action.equalsIgnoreCase("delete")){
+		 int id=Integer.parseInt(request.getParameter("id"));
+		 Studentdao.deleteStudent(id);
+		 response.sendRedirect("show.jsp");
+			
+			
 		}
 	}
 

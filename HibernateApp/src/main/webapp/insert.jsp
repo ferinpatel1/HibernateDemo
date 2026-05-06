@@ -43,6 +43,7 @@
 		</tr>
 	
 	</table>
+	<a href="show.jsp">show all student</a>
 
 
 </form>

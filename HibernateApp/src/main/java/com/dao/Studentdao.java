@@ -40,6 +40,7 @@ public class Studentdao {
 		Transaction tr=session.beginTransaction();
 		Student s=session.get(Student.class, id);
 		session.delete(s);
+		tr.commit();
 		session.close();
 		
 	}
